@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="AspNetCore.VersionInformation/AspNetCore.VersionInformation.csproj" />
+  <Project Path="SampleWebApp/SampleWebApp.csproj" />
+</Solution>
