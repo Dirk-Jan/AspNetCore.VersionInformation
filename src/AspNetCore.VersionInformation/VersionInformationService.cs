@@ -4,16 +4,27 @@ using Microsoft.Extensions.Logging;
 
 namespace DirkJan.AspNetCore.VersionInformation;
 
+/// <summary>
+/// Service that retrieves and caches version information from the entry assembly.
+/// </summary>
 internal class VersionInformationService(ILogger<VersionInformationService> logger) : IVersionInformationService
 {
     private VersionInfo? _versionInformation;
 
+    /// <summary>
+    /// Gets the cached version information, loading it if necessary.
+    /// </summary>
+    /// <returns>A <see cref="VersionInfo"/> object containing the version details.</returns>
     public VersionInfo GetVersionInformation()
     {
         _versionInformation ??= Load();
         return _versionInformation;
     }
 
+    /// <summary>
+    /// Loads version information from the entry assembly.
+    /// </summary>
+    /// <returns>A <see cref="VersionInfo"/> object with the loaded version information.</returns>
     private VersionInfo Load()
     {
         logger.LogDebug("Loading version information.");
@@ -46,6 +57,12 @@ internal class VersionInformationService(ILogger<VersionInformationService> logg
         return versionInformation;
     }
 
+    /// <summary>
+    /// Attempts to parse semantic version information from the informational version string.
+    /// </summary>
+    /// <param name="informationalVersion">The informational version string to parse.</param>
+    /// <param name="versionInfo">The version information object to populate with parsed values.</param>
+    /// <returns>True if semantic version was successfully parsed; otherwise, false.</returns>
     private bool TryParseSemVer(string informationalVersion, VersionInfo versionInfo)
     {
         const string semVerPattern =
@@ -86,6 +103,11 @@ internal class VersionInformationService(ILogger<VersionInformationService> logg
         return true;
     }
 
+    /// <summary>
+    /// Parses build metadata to extract branch and commit SHA information.
+    /// </summary>
+    /// <param name="buildMetadata">The build metadata string to parse.</param>
+    /// <param name="versionInfo">The version information object to populate with parsed values.</param>
     private void ParseBuildMetadata(string buildMetadata, VersionInfo versionInfo)
     {
         const string buildMetadataPattern =
@@ -111,6 +133,11 @@ internal class VersionInformationService(ILogger<VersionInformationService> logg
         versionInfo.ShortSha = sha[..7];
     }
 
+    /// <summary>
+    /// Parses Git commit SHA from the informational version string when semantic versioning is not available.
+    /// </summary>
+    /// <param name="informationalVersion">The informational version string to parse.</param>
+    /// <param name="versionInfo">The version information object to populate with parsed values.</param>
     private void ParseGitCommitSha(string informationalVersion, VersionInfo versionInfo)
     {
         const string gitCommitShaPattern = "(?<Sha>[0-9a-zA-Z]{40})$";
