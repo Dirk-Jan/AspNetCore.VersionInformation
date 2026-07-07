@@ -5,8 +5,20 @@
     <Nullable>enable</Nullable>
     <AssemblyName>DirkJan.AspNetCore.VersionInformation</AssemblyName>
     <RootNamespace>DirkJan.AspNetCore.VersionInformation</RootNamespace>
+    <Title>Dirk-Jan.AspNetCore.VersionInformation</Title>
+    <Authors>Dirk-Jan de Beijer</Authors>
+    <Description>Small library providing version endpoint and version logging compatible with GitVersion.</Description>
+    <RepositoryUrl>https://github.com/Dirk-Jan/AspNetCore.VersionInformation</RepositoryUrl>
+    <PackageId>Dirk-Jan.AspNetCore.VersionInformation</PackageId>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageTags>aspnetcore semver gitversion endpoint</PackageTags>
+    <Copyright>Copyright (c) Dirk-Jan de Beijer 2026.</Copyright>
+    <PackageProjectUrl>https://github.com/Dirk-Jan/AspNetCore.VersionInformation</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    <None Include="../../README.md" Pack="true" PackagePath="/"/>
   </ItemGroup>
 </Project>
