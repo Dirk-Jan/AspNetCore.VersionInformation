@@ -3,6 +3,8 @@ Small library providing version endpoint and version logging compatible with Git
 
 It tries to read the version information from the `InformationalVersion` attribute in the project file. If no SemVer can be parsed from the `InformationalVersion` attribute value, it will fall back to the assembly version.
 
+Repository: [Dirk-Jan/AspNetCore.VersionInformation (GitHub.com)](https://github.com/Dirk-Jan/AspNetCore.VersionInformation)
+
 Package: [Dirk-Jan.AspNetCore.VersionInformation (NuGet.org)](https://www.nuget.org/packages/Dirk-Jan.AspNetCore.VersionInformation)
 
 ## Getting Started
